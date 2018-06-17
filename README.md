@@ -47,25 +47,19 @@ values:
   POW_Z = 5,  APPROX_ITERS = 50
   <br>
 <a href="http://tinypic.com?ref=2jamdfc" target="_blank"><img src="http://i65.tinypic.com/2jamdfc.jpg" border="0" alt="Image and video hosting by TinyPic" width="75%"></a>
-
-
-<br>
+<br><br>
 values:
   POW_Z = 50,  APPROX_ITERS = 5
-  <br>
-<a href="http://tinypic.com?ref=5kiyhs" target="_blank"><img src="http://i64.tinypic.com/5kiyhs.jpg" border="0" alt="Image and video hosting by TinyPic" width="75%"></a>
-
-
 <br>
+<a href="http://tinypic.com?ref=5kiyhs" target="_blank"><img src="http://i64.tinypic.com/5kiyhs.jpg" border="0" alt="Image and video hosting by TinyPic" width="75%"></a>
+<br><br>
 values:
   POW_Z = 10,  APPROX_ITERS = 100
-  <br>
-<a href="http://tinypic.com?ref=24xnwaw" target="_blank"><img src="http://i64.tinypic.com/24xnwaw.jpg" border="0" alt="Image and video hosting by TinyPic" width="75%"></a>
-
-
 <br>
+<a href="http://tinypic.com?ref=24xnwaw" target="_blank"><img src="http://i64.tinypic.com/24xnwaw.jpg" border="0" alt="Image and video hosting by TinyPic" width="75%"></a>
+<br><br>
 values:
   POW_Z = 100,  APPROX_ITERS = 10
-  <br>
+<br>
 <a href="http://tinypic.com?ref=1231g5h" target="_blank"><img src="http://i64.tinypic.com/1231g5h.jpg" border="0" alt="Image and video hosting by TinyPic" width="75%"></a>
 
