@@ -1,7 +1,9 @@
 # HoleFilling
 Hole filling application for detecting a single hole in an image and fill it with a given weight function
 
+----------------------------------------------
 This projecy was made using opencv-3.2.0-vc14
+----------------------------------------------
 
 This application was made to detect a (single) hole in a given B&W image and fill it according to a given weight formula
 described in <i>WEIGHT</i> in holeFilling.h, one can change the values of <i>EPSILON, POW_Z, APPROX_ITERS</i> to get different results,
@@ -15,7 +17,8 @@ Also <i>WEIGHT</i> function to try different formulas.
              Linker > Input > Additional Dependencies.            <b>change names to your openCV lib relevant files</b>
 
 
-<b>How to Use</b>: Just give the relevant command line arguments for the program which should be <imageName.extention> <k-connection>
+<b>How to Use</b>: <br>
+Just give the relevant command line arguments for the program which should be "imageName.extention" "k-connection"
 
 <br><br><br>
 ### HoleFilling basic algorithm:
