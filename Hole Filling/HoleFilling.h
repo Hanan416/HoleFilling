@@ -31,23 +31,27 @@
 */
 
 #define EPSILON						0.00000001		// to avoid devision by zero, edit this value for different results
-#define POW_Z						20				// edit this value for different results, higher z -> more accurate
+#define POW_Z						50				// edit this value for different results, higher z -> more accurate
 #define WEIGHT(x, y_i_x, y_i_y)		1 / (pow(dist(x, y_i_x, y_i_y), POW_Z) + EPSILON)	// w(y_i, x), change formula for different results, NOTE: x is Pixel and y_i defined by its coordinates
+#define APPROX_ITERS				50				// change this for more/less iteration for holeFillingApprox, higher value -> more accuracy
 
 class HoleFilling
 {
 public:
-	HoleFilling(cv::Mat* srcIm, int k);
+	HoleFilling(cv::Mat* srcIm, int k, bool approxRes);
 	~HoleFilling() {};
 
 	void findHole();
 	cv::Mat fillHole();
+	cv::Mat fillHoleApprox();
+
 	double dist(Pixel x, int y_i_x, int y_i_y);
 
 private:
 	cv::Mat* _srcIm;	// the source image matrix
 	cv::Mat _resIm;		// the result image matrix
 	int _k;				// the k-connected neighbors
+	bool _approxRes;	// flag to show exact result or approximation
 
 	std::set<Pixel> holePixels;
 	std::set<std::pair<int, int>> boundryIndexes;

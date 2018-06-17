@@ -15,7 +15,7 @@ Pixel::Pixel(int x, int y, double i) {
 }
 
 
-void Pixel::setNeighbors(cv::Mat* srcIm, int k) {
+void Pixel::setNeighbors(cv::Mat* srcIm, int k, bool allNeighbors) {
 	if (_x == NULL || _y == NULL) {
 		std::cout << "Pixel indexes are NULL, aborting.." << std::endl;
 		return;
@@ -29,48 +29,73 @@ void Pixel::setNeighbors(cv::Mat* srcIm, int k) {
 	/***** top ****/ 
 	pX = _x;
 	pY = _y - 1;
-	addNeighbor(pX, pY, srcIm);
+	if (allNeighbors)
+		addAllNeighbors(pX, pY, srcIm);
+	else
+		addNeighbors(pX, pY, srcIm);
 
 	/***** bottom ****/
 	pX = _x;
 	pY = _y + 1;
-	addNeighbor(pX, pY, srcIm);
+	if (allNeighbors)
+		addAllNeighbors(pX, pY, srcIm);
+	else
+		addNeighbors(pX, pY, srcIm);
 
 	/***** left ****/
 	pX = _x - 1;
 	pY = _y;
-	addNeighbor(pX, pY, srcIm);
+	if (allNeighbors)
+		addAllNeighbors(pX, pY, srcIm);
+	else
+		addNeighbors(pX, pY, srcIm);
 
 	/***** right ****/
 	pX = _x + 1;
 	pY = _y;
-	addNeighbor(pX, pY, srcIm);
+	if (allNeighbors)
+		addAllNeighbors(pX, pY, srcIm);
+	else
+		addNeighbors(pX, pY, srcIm);
 
 	// add diagonal neighbors
 	if (k == 8) {
 		/***** top left ****/
 		pX = _x - 1;
 		pY = _y - 1;
-		addNeighbor(pX, pY, srcIm);
+		if (allNeighbors)
+			addAllNeighbors(pX, pY, srcIm);
+		else
+			addNeighbors(pX, pY, srcIm);
 
 		/***** top right ****/
 		pX = _x + 1;
 		pY = _y - 1;
-		addNeighbor(pX, pY, srcIm);
+		if (allNeighbors)
+			addAllNeighbors(pX, pY, srcIm);
+		else
+			addNeighbors(pX, pY, srcIm);
 
 		/***** bottom left ****/
 		pX = _x - 1;
 		pY = _y + 1;
-		addNeighbor(pX, pY, srcIm);
+		if (allNeighbors)
+			addAllNeighbors(pX, pY, srcIm);
+		else
+			addNeighbors(pX, pY, srcIm);
 
 		/***** bottom right ****/
 		pX = _x + 1;
 		pY = _y + 1;
-		addNeighbor(pX, pY, srcIm);
+		if (allNeighbors)
+			addAllNeighbors(pX, pY, srcIm);
+		else
+			addNeighbors(pX, pY, srcIm);
 	}
 
-
+	//std::cout << "Added " << _neighbors.size() << " neighbors total" << std::endl;
 }
+
 /* Purpose: check the neighbors evaluated coords
 *			for valid values i.e. inside the image
 */
@@ -86,12 +111,25 @@ bool Pixel::checkCoords(int x, int y, cv::Mat* srcIm) {
 
 // adding a neighbor only if it inside the picture and
 // had a value in range [0, 1] i.e. not hole as well
-void Pixel::addNeighbor(int x, int y, cv::Mat* srcIm) {
+void Pixel::addNeighbors(int x, int y, cv::Mat* srcIm) {
 	if (checkCoords(x, y, srcIm)){
-		if(srcIm->at<double>(x,y) != -1)
-		_neighbors.push_back(Pixel(x, y, srcIm->at<double>(x, y)));
+		if (srcIm->at<double>(x, y) != -1) {
+			std::pair<int, int> neiborCoords = std::pair<int, int>(x, y);
+			_neighbors.push_back(neiborCoords);
+			//_neighbors.push_back(Pixel(x, y, srcIm->at<double>(x, y)));
+		}
 	}
 }
+
+// adding a neighbor only if it inside the picture and
+void Pixel::addAllNeighbors(int x, int y, cv::Mat* srcIm) {
+	if (checkCoords(x, y, srcIm)) {
+		std::pair<int, int> neiborCoords = std::pair<int, int>(x, y);
+		_neighbors.push_back(neiborCoords);
+		//_neighbors.push_back(Pixel(x, y, srcIm->at<double>(x, y)));
+	}
+}
+
 
 bool Pixel::operator<(Pixel const & rhs) const
 {
