@@ -9,12 +9,15 @@ This application was made to detect a (single) hole in a given B&W image and fil
 described in <i>WEIGHT</i> in holeFilling.h, one can change the values of <i>EPSILON, POW_Z, APPROX_ITERS</i> to get different results,
 Also <i>WEIGHT</i> function to try different formulas.
 
-
-<b>NOTE</b>: the original project is very large ~1GB!! due to including openCV inside $(solutionDir) in a folder called
-             External Libraries. In order to run the project please change the solution properties:
-             C/C++ > General > Additional Libraries.              <b>change location to your openCV lib files</b>
-             Linker > General > Additional Library Directories.   <b>change location to your openCV build\x64\vcXX\lib folder</b>
-             Linker > Input > Additional Dependencies.            <b>change names to your openCV lib relevant files</b>
+<br>
+<b>NOTE!</b> 
+the original project is very large ~1GB!! due to including openCV inside $(solutionDir) in a folder called
+External Libraries. In order to run the project please change the solution properties:    
+             <ul>
+             <li>C/C++ > General > Additional Libraries.              <b>change location to your openCV lib files</b> </li>
+             <li>Linker > General > Additional Library Directories.   <b>change location to your openCV build\x64\vcXX\lib folder</b> </li>
+             <li>Linker > Input > Additional Dependencies.            <b>change names to your openCV lib relevant files</b> </li>
+             </ul>
 
 
 <b>How to Use</b>: <br>
